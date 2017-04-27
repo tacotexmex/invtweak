@@ -5,11 +5,11 @@ tweak.formspec = {}
 
 tweak.buttons = {
 --sort_asc
-"0.55,0.6;sort_asc;^]".."tooltip[sort_asc;sort Items asc.;#30434C;#FFF]",
+"0.5,0;sort_asc;^]".."tooltip[sort_asc;sort Items asc.;#30434C;#FFF]",
 --sort_desc
-"0.55,0.6;sort_desc;v]".."tooltip[sort_desc;sort Items desc.;#30434C;#FFF]",
+"0.5,0;sort_desc;v]".."tooltip[sort_desc;sort Items desc.;#30434C;#FFF]",
 --concatenate
-"0.65,0.6;sort;›•]".."tooltip[sort;stack Items and sort asc.;#30434C;#FFF]"
+"0.5,0;sort;=]".."tooltip[sort;stack Items and sort asc.;#30434C;#FFF]"
 }
 
 local function get_formspec_size(formspec)
@@ -38,7 +38,7 @@ local function add_buttons(player, formspec)
 		return
 	end
 	for i=1,#tweak.buttons do
-		formspec = formspec .. "button["..w-2+(i*0.5)..",-0.2;" .. tweak.buttons[i]
+		formspec = formspec .. "button["..w-1.27+(i*0.27)..",4.3;" .. tweak.buttons[i]
 	end
 	player:set_inventory_formspec(formspec)
 	return formspec
