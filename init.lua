@@ -1,4 +1,4 @@
-local auto_refill = minetest.setting_getbool("invtweak_auto_refill") or true
+local auto_refill = minetest.settings:get_bool("invtweak_auto_refill") or true
 
 local tweak = {}
 tweak.formspec = {}
@@ -158,7 +158,7 @@ tweak.sort = function(player, mode, con)
 	if inv then
 		local list = inv:get_list("main")
 		local tmp_list = {}
-		
+
 		--write whole list as table
 		for _,stack in ipairs(list) do
 			local tbl_stack = stack:to_table()
@@ -207,7 +207,7 @@ if auto_refill == true then
 		if not placer then return end
 		local index = placer:get_wield_index()
 		local cnt = placer:get_wielded_item():get_count()-1
-		if minetest.setting_getbool("creative_mode") then
+		if minetest.settings:get_bool("creative_mode") then
 			return true
 		else
 			if cnt == 0 then
@@ -222,7 +222,7 @@ wielded.name = {}
 wielded.wear = {}
 
 minetest.register_on_punchnode(function(pos, node, puncher)
-	if not puncher or minetest.setting_getbool("creative_mode") then
+	if not puncher or minetest.settings:get_bool("creative_mode") then
 		return
 	end
 	local name = puncher:get_player_name()
